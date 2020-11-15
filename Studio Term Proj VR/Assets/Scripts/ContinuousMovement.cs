@@ -12,10 +12,11 @@ public class ContinuousMovement : MonoBehaviour
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f;
 
-    private float fallingSpeed;
+    public float fallingSpeed;
     private XRRig rig;
     private Vector2 inputAxis;
     private CharacterController character;
+    public bool movingClimb;
 
     // Start is called before the first frame update
     void Start()
@@ -57,13 +58,23 @@ public class ContinuousMovement : MonoBehaviour
         character.center = new Vector3(capsuleCenter.x, character.height/2 + character.skinWidth, capsuleCenter.z);
     }
 
-    bool CheckIfGrounded()
+    public bool CheckIfGrounded()
     {
         //tells if ground
         Vector3 rayStart = transform.TransformPoint(character.center);
         float rayLength = character.center.y + 0.01f;
         bool hasHit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
         return hasHit;
+    }
+
+    public void checkGrabTrue()
+    {
+        movingClimb = true;
+    }
+
+    public void checkGrabFalse()
+    {
+        movingClimb = false;
     }
 
 }

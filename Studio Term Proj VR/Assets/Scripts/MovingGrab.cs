@@ -9,38 +9,86 @@ public class MovingGrab : MonoBehaviour
     public GameObject Parent2Be;
     public GameObject Child2Transfer;   
     private bool grabable;
-
+    public static bool grab;
+    Renderer rend;
+    public int gripCounter;
+    public GameObject FalseParent;
 
     // Start is called before the first frame update
     void Start()
     {
-        grabable = false;       
-       
+        grabable = false;
+        grab = false;
+        rend = GetComponent<Renderer>();
+        gripCounter = 0;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        grabable = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        grabable = false;
-    }
-    public void SetParent(GameObject newParent)
-    {
-        Child2Transfer.transform.parent = newParent.transform;
-        Debug.Log("Child2Transfer's Parent: " + Child2Transfer.transform.parent.name);
-
-        if (newParent.transform.parent != null)
+        if (other.tag == "Hand")
         {
-            Debug.Log("Child2Transfer's ground parent: " + Child2Transfer.transform.parent.parent.name);
+            grabable = true;
+            grab = true;
+            Debug.Log("trigger enter");
+            rend.material.color = Color.red;
         }
     }
 
-  
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    grabable = false;
+    //    grab = true;
+   //     Debug.Log("trigger exit");
+   // }
+    public void SetParent(GameObject newParent)
+    {
+        {
 
+            if (grab == true)
+            {
+                Child2Transfer.transform.parent = newParent.transform;
+                Debug.Log("Child2Transfer's Parent: " + Child2Transfer.transform.parent.name);
+
+                if (newParent.transform.parent != null)
+                {
+                    Debug.Log("Child2Transfer's ground parent: " + Child2Transfer.transform.parent.parent.name);
+                }
+            }
+        }
+    }
+
+    private void Update()
+    {
+
+    }
+
+    public void SetParentOnFalse(GameObject newParent)
+    {
+        {
+            if (gripCounter == 0)
+            {
+                Child2Transfer.transform.parent = newParent.transform;
+                Debug.Log("Child2Transfer's Parent: " + Child2Transfer.transform.parent.name);
+                grabable = false;
+                grab = false;
+                if (newParent.transform.parent != null)
+                {
+                    Debug.Log("Child2Transfer's ground parent: " + Child2Transfer.transform.parent.parent.name);
+                }
+            }
+        }
+    }
+
+  public void gripCountAdd()
+    {
+        gripCounter += 1;
+    }
+
+    public void gripCountSubtract()
+    {
+        gripCounter -= 1;
+    }
     public void DetachFrom()
     {
         if(grabable == true)

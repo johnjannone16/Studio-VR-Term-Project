@@ -17,8 +17,6 @@ public class Climber : MonoBehaviour
     {
         character = GetComponent<CharacterController>();
         continuousMovement = GetComponent<ContinuousMovement>();
-
-
     }
 
     // Update is called once per frame
@@ -34,22 +32,26 @@ public class Climber : MonoBehaviour
             continuousMovement.enabled = true;            
         }
 
-       
 
+        
 
 
         //climbing comp
         void Climb()
         {
             InputDevices.GetDeviceAtXRNode(climbingHand.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
-
+           
             character.Move(transform.rotation * -velocity * Time.fixedDeltaTime);
+            
         }
     }
 
     public void setZeroGrav()
     {
+            
         continuousMovement.gravity = 0f;
+        continuousMovement.fallingSpeed = 0f;
+        
     }
 
     public void setGrav()
