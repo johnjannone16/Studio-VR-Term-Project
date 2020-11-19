@@ -13,6 +13,9 @@ public class MovingGrab : MonoBehaviour
     Renderer rend;
     public int gripCounter;
     public GameObject FalseParent;
+    private Climber climber;
+    public CharacterController character;
+    public ContinuousMovement continuousMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class MovingGrab : MonoBehaviour
         grab = false;
         rend = GetComponent<Renderer>();
         gripCounter = 0;
+        climber = GetComponent<Climber>();
     }
 
 
@@ -49,7 +53,8 @@ public class MovingGrab : MonoBehaviour
             {
                 Child2Transfer.transform.parent = newParent.transform;
                 Debug.Log("Child2Transfer's Parent: " + Child2Transfer.transform.parent.name);
-
+                
+                character.enabled = false;
                 if (newParent.transform.parent != null)
                 {
                     Debug.Log("Child2Transfer's ground parent: " + Child2Transfer.transform.parent.parent.name);
@@ -100,5 +105,39 @@ public class MovingGrab : MonoBehaviour
         if(grabable == true)
             Child2Transfer.transform.localPosition = Parent2Be.transform.localPosition;
     
+    }
+
+    public void setZeroGrav()
+    {
+        if (grab == true)
+        {
+            continuousMovement.gravity = 0f;
+            continuousMovement.fallingSpeed = 0f;
+        }
+
+    }
+
+    public void enableChar()
+    {
+        if(grab == false)
+        {
+            character.enabled = true;
+        }
+    }
+
+    public void disableChar()
+    {
+        if (grab == true)
+        {
+            character.enabled = false;
+        }
+    }
+
+    public void setGrav()
+    {
+        if (grab == false)
+        {
+            continuousMovement.gravity = -9.81f;
+        }
     }
 }

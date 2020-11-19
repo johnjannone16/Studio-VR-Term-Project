@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Move Climb
   - Hand
+  - AnimationStarter
   layers:
   - Default
   - TransparentFX

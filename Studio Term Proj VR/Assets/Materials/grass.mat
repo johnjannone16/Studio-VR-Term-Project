@@ -34,6 +34,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 5f49e681b14d6b64cbebf1f7f16339bd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_83C2311C:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_C579404C:
         m_Texture: {fileID: 2800000, guid: 5f49e681b14d6b64cbebf1f7f16339bd, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -72,7 +76,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_2E00C41E: 2
+    - Vector1_53979197: 0.3
     - Vector1_637FDD18: 0.3
+    - Vector1_AEC64EF8: 0.06
     - _AlphaClip: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
@@ -126,6 +132,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
+    - Vector2_36EF21B3: {r: 6, g: 0, b: 0, a: 0}
     - Vector2_DD21EEB1: {r: 6, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
