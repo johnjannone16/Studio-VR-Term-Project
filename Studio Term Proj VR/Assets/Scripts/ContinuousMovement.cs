@@ -11,18 +11,29 @@ public class ContinuousMovement : MonoBehaviour
     public float gravity = -9.81f;
     public LayerMask groundLayer;
     public float additionalHeight = 0.2f;
-
+    public float jumpForce = 0.01f;
     public float fallingSpeed;
+    public bool movingClimb;
+
+
+
     private XRRig rig;
     private Vector2 inputAxis;
     private CharacterController character;
-    public bool movingClimb;
+    private bool buttonValue;
+    private Vector3 playerVelocity;
+    private bool buttonPressed;
+    private InputDevice controller;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterController>();
         rig = GetComponent<XRRig>();
+       
+
     }
 
     // Update is called once per frame
@@ -30,7 +41,12 @@ public class ContinuousMovement : MonoBehaviour
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
+        device.TryGetFeatureValue(CommonUsages.primaryButton, out buttonValue);
+       
     }
+
+
+
 
     private void FixedUpdate()
     {
@@ -47,15 +63,27 @@ public class ContinuousMovement : MonoBehaviour
             fallingSpeed = 0;
         else
             fallingSpeed += gravity * Time.fixedDeltaTime;
-        
+
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+
+        if (buttonValue == true && isGrounded == true)
+        {
+            Debug.Log("primaryButton is pressed " + buttonValue);
+            buttonPressed = true;
+            character.Move(Vector3.up * Mathf.Sqrt(jumpForce));
+        }
+        else
+        {
+            Debug.Log("primaryButton is released " + buttonValue);
+            buttonPressed = false;
+        }
     }
 
     void CapsuleFollowHeadset()
     {
         character.height = rig.cameraInRigSpaceHeight + additionalHeight;
         Vector3 capsuleCenter = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
-        character.center = new Vector3(capsuleCenter.x, character.height/2 + character.skinWidth, capsuleCenter.z);
+        character.center = new Vector3(capsuleCenter.x, character.height / 2 + character.skinWidth, capsuleCenter.z);
     }
 
     public bool CheckIfGrounded()
@@ -77,5 +105,15 @@ public class ContinuousMovement : MonoBehaviour
         movingClimb = false;
     }
 
-}
+    private void UpdateJump(InputDevice controller)
+    {
+        bool buttonValue;
 
+        if (controller.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonValue) && buttonValue)
+        {
+
+        }
+
+    }
+
+}

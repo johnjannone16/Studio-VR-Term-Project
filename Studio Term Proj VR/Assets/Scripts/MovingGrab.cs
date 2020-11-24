@@ -53,7 +53,7 @@ public class MovingGrab : MonoBehaviour
             {
                 Child2Transfer.transform.parent = newParent.transform;
                 Debug.Log("Child2Transfer's Parent: " + Child2Transfer.transform.parent.name);
-                
+                continuousMovement.fallingSpeed = 0;
                 character.enabled = false;
                 if (newParent.transform.parent != null)
                 {
@@ -77,6 +77,7 @@ public class MovingGrab : MonoBehaviour
                 Debug.Log("Child2Transfer's Parent: " + Child2Transfer.transform.parent.name);
                 grabable = false;
                 grab = false;
+                character.enabled = true;
                 if (newParent.transform.parent != null)
                 {
                     Debug.Log("Child2Transfer's ground parent: " + Child2Transfer.transform.parent.parent.name);
