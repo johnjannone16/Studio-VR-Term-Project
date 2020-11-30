@@ -14,16 +14,15 @@ public class ContinuousMovement : MonoBehaviour
     public float jumpForce = 0.01f;
     public float fallingSpeed;
     public bool movingClimb;
-
+    public bool isGrounded;
 
 
     private XRRig rig;
     private Vector2 inputAxis;
     private CharacterController character;
     private bool buttonValue;
-    private Vector3 playerVelocity;
     private bool buttonPressed;
-    private InputDevice controller;
+
 
 
 
@@ -58,7 +57,7 @@ public class ContinuousMovement : MonoBehaviour
         character.Move(direction * Time.deltaTime * speed);
 
         //gravity
-        bool isGrounded = CheckIfGrounded();
+        isGrounded = CheckIfGrounded();
         if (isGrounded)
             fallingSpeed = 0;
         else
@@ -114,6 +113,12 @@ public class ContinuousMovement : MonoBehaviour
 
         }
 
+    }
+
+    public void setGroundedTrue()
+    {
+        isGrounded = true;
+        fallingSpeed = 0f;
     }
 
 }

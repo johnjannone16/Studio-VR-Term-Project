@@ -7,6 +7,8 @@ TagManager:
   - Move Climb
   - Hand
   - AnimationStarter
+  - Level1Cull
+  - Level2Cull
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Grab Ignore Ray
   - Body
   - Occuluded
-  - 
-  - 
+  - Pushable
+  - PushableBounds
   - 
   - 
   - 
