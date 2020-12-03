@@ -9,6 +9,7 @@ TagManager:
   - AnimationStarter
   - Level1Cull
   - Level2Cull
+  - Level2EndCull
   layers:
   - Default
   - TransparentFX

@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Climber.cs" />
     <Compile Include="Assets\Scripts\ContinuousMovement.cs" />
     <Compile Include="Assets\Scripts\CullingScript.cs" />
+    <Compile Include="Assets\Scripts\Level2EndCull.cs" />
     <Compile Include="Assets\Scripts\MovingGrab.cs" />
     <Compile Include="Assets\Scripts\PushScript.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />

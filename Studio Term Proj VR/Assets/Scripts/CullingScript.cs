@@ -15,7 +15,13 @@ public class CullingScript : MonoBehaviour
             level1.SetActive(false);
         }
 
-        if(other.CompareTag("Level2Cull"))
+        if (other.CompareTag("Level2EndCull"))
+        {
+            Debug.Log("open part is set inactive");
+            level2.SetActive(true);
+        }
+
+        if (other.CompareTag("Level2Cull"))
         {
             Debug.Log("Level 2 Culled");
             level2.SetActive(false);
