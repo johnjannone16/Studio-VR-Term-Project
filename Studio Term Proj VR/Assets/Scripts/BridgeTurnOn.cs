@@ -5,7 +5,7 @@ using UnityEngine;
 public class BridgeTurnOn : MonoBehaviour
 {
     public GameObject bridge;
-   
+    public AudioSource whispers;
     //public Renderer rend;
 
     private void OnTriggerEnter(Collider other)
@@ -14,6 +14,7 @@ public class BridgeTurnOn : MonoBehaviour
         {
             Debug.Log("Animation Start");
             bridge.SetActive(true);
+            whispers.Stop();
         }
     }
 }

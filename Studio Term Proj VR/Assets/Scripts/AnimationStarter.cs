@@ -6,6 +6,8 @@ public class AnimationStarter : MonoBehaviour
 {
     public Animator animator1;
     public Animator animator2;
+    public AudioSource whispers;
+    public AudioSource wood;
     //public Renderer rend;
 
     private void OnTriggerEnter(Collider other)
@@ -16,6 +18,10 @@ public class AnimationStarter : MonoBehaviour
             //rend.material.color = Color.red;
             animator1.SetFloat("Blend", 0);
             animator2.SetFloat("Blend", 0);
+            whispers.Stop();
+            wood.Play();
         }
     }
+
+    
 }
