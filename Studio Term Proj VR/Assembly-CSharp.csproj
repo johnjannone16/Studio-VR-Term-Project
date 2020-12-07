@@ -72,8 +72,10 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+    <Compile Include="Assets\Scripts\AmbienceControl.cs" />
     <Compile Include="Assets\Scripts\AnimationStarter.cs" />
-    <Compile Include="Assets\Scripts\BridgeOpener.cs" />
+    <Compile Include="Assets\Scripts\BridgeOff.cs" />
+    <Compile Include="Assets\Scripts\BridgeTurnOn.cs" />
     <Compile Include="Assets\Scripts\ClimbInteractable.cs" />
     <Compile Include="Assets\Scripts\Climber.cs" />
     <Compile Include="Assets\Scripts\ContinuousMovement.cs" />

@@ -10,6 +10,7 @@ TagManager:
   - Level1Cull
   - Level2Cull
   - Level2EndCull
+  - BridgeOpen
   layers:
   - Default
   - TransparentFX

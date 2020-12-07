@@ -12,6 +12,12 @@ ModelImporter:
   - first:
       74: -730672468404893537
     second: TwirlBit|TwirlBitAction.001
+  - first:
+      74: -7070755367565475379
+    second: Cube.015|Cube.015Action
+  - first:
+      74: -7538957304595133294
+    second: Cube.015|FieldAction
   externalObjects: {}
   materials:
     materialImportMode: 1
